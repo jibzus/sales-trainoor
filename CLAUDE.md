@@ -76,6 +76,39 @@ pnpm typecheck    # Run TypeScript check
 pnpm lint         # Run ESLint
 ```
 
+## Deployment
+
+### First-time production setup
+
+```bash
+# 1. Set Convex production environment variables
+npx convex env set CLERK_JWT_ISSUER_DOMAIN "https://your-clerk-domain.clerk.accounts.dev" --prod
+
+# 2. Deploy Convex functions to production
+npx convex deploy
+
+# 3. Set Vercel environment variables (in dashboard or CLI):
+#    - CONVEX_DEPLOYMENT=prod:prestigious-partridge-963
+#    - NEXT_PUBLIC_CONVEX_URL=https://prestigious-partridge-963.convex.cloud
+#    - All Clerk and API keys
+
+# 4. Deploy to Vercel
+git push  # or vercel deploy --prod
+```
+
+### Subsequent deploys
+
+If only Next.js code changed: just `git push`
+
+If Convex schema/functions changed: run `npx convex deploy` first
+
+### Dev vs Prod Convex
+
+| Environment | Deployment | URL |
+|-------------|------------|-----|
+| Development | `dev:lovely-marmot-294` | `https://lovely-marmot-294.convex.cloud` |
+| Production | `prod:prestigious-partridge-963` | `https://prestigious-partridge-963.convex.cloud` |
+
 ## Notes
 
 - Diarization is always enabled (hardcoded) since all calls have multiple speakers
