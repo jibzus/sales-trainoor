@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { CallUpload } from "./call-upload";
 import { FeedbackDisplay } from "./feedback-display";
+import { FeedbackHistory } from "./feedback-history";
 import { Id } from "../../convex/_generated/dataModel";
 import type { SalesFeedback } from "@/lib/types";
 
@@ -33,12 +34,9 @@ export function Dashboard(): React.ReactElement {
         </section>
       )}
 
-      {/* Placeholder for feedback history - to be implemented */}
       <section>
         <h2 className="text-2xl font-semibold mb-4">Previous Calls</h2>
-        <div className="text-gray-500 dark:text-gray-400 text-center py-8 border border-dashed border-gray-300 dark:border-gray-700 rounded-lg">
-          <p>Your previous call analyses will appear here.</p>
-        </div>
+        <FeedbackHistory />
       </section>
     </div>
   );
